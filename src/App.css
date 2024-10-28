@@ -1,38 +1,103 @@
+/* Estilos generales */
 .App {
   text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Navbar */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  background-color: #1a1a1a;
+  box-shadow: 0px 4px 15px rgba(0, 212, 255, 0.3);
 }
 
-.App-link {
-  color: #61dafb;
+.nav-links {
+  display: flex;
+  gap: 15px; /* Espacio entre enlaces */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-links a {
+  color: #00d4ff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00a3cc;
+  transform: scale(1.1);
+}
+
+.logout-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #00d4ff;
+  background-color: transparent;
+  border: 1px solid #00d4ff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #00d4ff;
+  color: #0d0d0d;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+/* Estilo para el componente Active Collaborators */
+.active-collaborators {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px rgba(0, 212, 255, 0.2);
+  color: #ffffff;
+}
+
+.active-collaborators h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #00d4ff;
+  margin-bottom: 20px;
+  text-shadow: 0px 0px 6px #00d4ff, 0px 0px 10px #00d4ff;
+}
+
+.active-collaborators ul {
+  list-style: none;
+  padding: 0;
+}
+
+.active-collaborators li {
+  background-color: #2a2a2a;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #00d4ff;
+  box-shadow: 0px 4px 10px rgba(0, 212, 255, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.active-collaborators li:hover {
+  background-color: #333333;
+}
+
+.active-collaborators li p {
+  font-size: 1rem;
+  color: #bfbfbf;
+  margin: 10px 0;
+}
+
+.active-collaborators li p strong {
+  color: #00d4ff;
 }
