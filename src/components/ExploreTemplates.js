@@ -1,50 +1,57 @@
+// src/components/ExploreTemplates.js
+
+// Importaciones necesarias para la funcionalidad de explorar plantillas
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-import './ExploreTemplates.css';
+import './ExploreTemplates.css'; // Importa el archivo CSS correspondiente
 
+// Componente ExploreTemplates que permite unirse a plantillas creadas por otros usuarios
 const ExploreTemplates = ({ userId }) => {
-  const [templates, setTemplates] = useState([]);
-  const [joinedTemplates, setJoinedTemplates] = useState([]); // Plantillas en las que ya está el usuario
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [role, setRole] = useState('Humano');
-  const [message, setMessage] = useState('');
+  const [templates, setTemplates] = useState([]); // Estado para almacenar plantillas disponibles
+  const [joinedTemplates, setJoinedTemplates] = useState([]); // Estado para almacenar plantillas en las que ya participa el usuario
+  const [selectedTemplate, setSelectedTemplate] = useState(null); // Estado para la plantilla seleccionada
+  const [role, setRole] = useState('Humano'); // Estado para el rol seleccionado
+  const [message, setMessage] = useState(''); // Estado para mostrar mensajes
 
+  // Función para capitalizar la primera letra de una cadena
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  // Función para obtener las plantillas creadas por otros usuarios
   const fetchOtherTemplates = async () => {
     const { data, error } = await supabase
       .from('Templates')
-      .select('*, Users(username)')
-      .neq('user_id', userId); // Excluir plantillas creadas por el usuario actual
+      .select('*, Users(username)') // Incluye el nombre de usuario del creador
+      .neq('user_id', userId); // Excluye las plantillas creadas por el usuario actual
 
     if (error) {
       console.error('Error fetching templates:', error);
     } else {
-      setTemplates(data);
+      setTemplates(data); // Guarda las plantillas en el estado
     }
 
     // Obtener plantillas en las que el usuario ya está participando
     const { data: collaborations, error: collabError } = await supabase
       .from('Collaborations')
       .select('template_id')
-      .eq('user_id', userId);
+      .eq('user_id', userId); // Filtra por el ID del usuario
 
     if (collabError) {
       console.error('Error fetching collaborations:', collabError);
     } else {
       const joinedTemplateIds = collaborations.map((collab) => collab.template_id);
-      setJoinedTemplates(joinedTemplateIds);
+      setJoinedTemplates(joinedTemplateIds); // Guarda las plantillas en las que participa el usuario
     }
   };
 
+  // Función para unirse a una plantilla seleccionada
   const handleJoinTemplate = async (templateId) => {
     const { data: existingCollaboration, error: checkError } = await supabase
       .from('Collaborations')
       .select('*')
       .eq('template_id', templateId)
-      .eq('user_id', userId);
+      .eq('user_id', userId); // Verifica si el usuario ya está en la plantilla
 
     if (checkError) {
       setMessage(`Error: ${checkError.message}`);
@@ -57,7 +64,7 @@ const ExploreTemplates = ({ userId }) => {
     }
 
     const { error } = await supabase.from('Collaborations').insert([
-      { template_id: templateId, user_id: userId, role },
+      { template_id: templateId, user_id: userId, role }, // Inserta la colaboración
     ]);
 
     if (error) {
@@ -68,10 +75,12 @@ const ExploreTemplates = ({ userId }) => {
     }
   };
 
+  // useEffect para cargar las plantillas al montar el componente
   useEffect(() => {
-    fetchOtherTemplates();
+    fetchOtherTemplates(); // Llama a la función para obtener plantillas de otros usuarios
   }, [userId]);
 
+  // Renderizado del componente ExploreTemplates
   return (
     <div className="explore-container">
       <h2>Explorar Plantillas</h2>
@@ -93,6 +102,7 @@ const ExploreTemplates = ({ userId }) => {
         ))}
       </ul>
 
+      {/* Contenedor para seleccionar rol al unirse a una plantilla */}
       {selectedTemplate && !joinedTemplates.includes(selectedTemplate) && (
         <div className="select-role-container">
           <h3>Elige tu rol para unirte</h3>
@@ -110,6 +120,8 @@ const ExploreTemplates = ({ userId }) => {
           <button onClick={() => handleJoinTemplate(selectedTemplate)}>Unirse</button>
         </div>
       )}
+
+      {/* Mensaje de error o confirmación */}
       <p className="message">{message}</p>
     </div>
   );

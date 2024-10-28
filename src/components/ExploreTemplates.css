@@ -1,6 +1,6 @@
 /* src/components/ExploreTemplates.css */
 
-/* Contenedor principal */
+/* Contenedor principal para explorar plantillas */
 .explore-container {
   max-width: 800px;
   margin: 0 auto;
@@ -46,10 +46,12 @@ li {
   transition: background-color 0.3s ease;
 }
 
+/* Efecto hover en las plantillas */
 li:hover {
   background-color: #333333;
 }
 
+/* Estilo para el título de cada plantilla */
 li h4 {
   color: #00d4ff;
   font-size: 1.5rem;
@@ -57,6 +59,7 @@ li h4 {
   text-shadow: 0px 0px 4px #00d4ff;
 }
 
+/* Estilo para la descripción de las plantillas */
 li p {
   color: #bfbfbf;
   font-size: 1rem;
@@ -76,12 +79,13 @@ li button {
   margin-top: 10px;
 }
 
+/* Hover para el botón de unirse */
 li button:hover {
   background-color: #00d4ff;
   color: #1c1c1c;
 }
 
-/* Botón deshabilitado para historias en las que ya estás */
+/* Botón deshabilitado para historias en las que el usuario ya participa */
 .already-joined {
   background-color: #bfbfbf;
   color: #ffffff;
@@ -93,7 +97,7 @@ li button:hover {
   margin-top: 10px;
 }
 
-/* Contenedor de selección de rol */
+/* Contenedor para la selección de rol */
 .select-role-container {
   background-color: #1a1a1a;
   padding: 20px;
@@ -117,6 +121,7 @@ li button:hover {
   width: 220px;
 }
 
+/* Estilo del select */
 .custom-select select {
   width: 100%;
   padding: 10px;
@@ -125,13 +130,12 @@ li button:hover {
   color: #ffffff;
   border: 1px solid #00d4ff;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   font-family: 'Orbitron', sans-serif;
   font-size: 1rem;
   transition: border-color 0.3s ease;
 }
 
+/* Indicador del select */
 .custom-select::after {
   content: '▼';
   position: absolute;
@@ -142,7 +146,7 @@ li button:hover {
   pointer-events: none;
 }
 
-/* Enfocar el select */
+/* Estilo cuando el select está enfocado */
 .custom-select select:focus {
   outline: none;
   border-color: #00d4ff;
@@ -150,7 +154,7 @@ li button:hover {
   box-shadow: 0px 0px 10px rgba(0, 212, 255, 0.6);
 }
 
-/* Botón de unirse con rol */
+/* Botón para unirse con rol seleccionado */
 .select-role-container button {
   background-color: #1c1c1c;
   color: #00d4ff;
@@ -163,12 +167,13 @@ li button:hover {
   margin-top: 10px;
 }
 
+/* Hover para el botón de unirse */
 .select-role-container button:hover {
   background-color: #00d4ff;
   color: #1c1c1c;
 }
 
-/* Mensaje */
+/* Mensaje de estado o error */
 .message {
   color: #bfbfbf;
   font-size: 1.1rem;

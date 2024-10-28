@@ -1,7 +1,11 @@
+// src/components/CreateTemplate.js
+
+// Importaciones necesarias para manejar la creación de plantillas
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-import './CreateTemplate.css';
+import './CreateTemplate.css'; // Importa el archivo CSS correspondiente
 
+// Plantillas predeterminadas para seleccionar
 const defaultTemplates = [
   { title: 'La Misión a Marte', description: 'Explora Marte y descubre los misterios de este planeta rojo.', mission: 'Establecer una base en Marte.', role: 'Astronauta', planet: 'Marte' },
   { title: 'Invasión Alienígena', description: 'Defiende la Tierra contra una invasión alienígena inminente.', mission: 'Proteger a la humanidad.', role: 'Guerrero', planet: 'Tierra' },
@@ -15,17 +19,19 @@ const defaultTemplates = [
   { title: 'La Invasión de Palasvelta', description: 'Protege la paz en Palasvelta mientras fuerzas externas tratan de invadir.', mission: 'Defender el territorio.', role: 'Guerrero', planet: 'Palasvelta' }
 ];
 
+// Componente CreateTemplate que permite crear plantillas o usar plantillas prediseñadas
 const CreateTemplate = ({ userId }) => {
-  const [view, setView] = useState('selection');
-  const [storyTitle, setStoryTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [mission, setMission] = useState('');
-  const [role, setRole] = useState('Humano');
-  const [planet, setPlanet] = useState('Tierra');
-  const [message, setMessage] = useState('');
-  const [showNotification, setShowNotification] = useState(false);
-  const [usedTemplates, setUsedTemplates] = useState([]);
+  const [view, setView] = useState('selection'); // Estado para alternar entre vistas
+  const [storyTitle, setStoryTitle] = useState(''); // Título de la historia
+  const [description, setDescription] = useState(''); // Descripción de la historia
+  const [mission, setMission] = useState(''); // Misión de la historia
+  const [role, setRole] = useState('Humano'); // Rol del usuario
+  const [planet, setPlanet] = useState('Tierra'); // Planeta seleccionado
+  const [message, setMessage] = useState(''); // Mensaje de éxito o error
+  const [showNotification, setShowNotification] = useState(false); // Estado para mostrar notificaciones
+  const [usedTemplates, setUsedTemplates] = useState([]); // Estado para plantillas ya usadas por el usuario
 
+  // useEffect para cargar las plantillas que ya ha usado el usuario
   useEffect(() => {
     const fetchUsedTemplates = async () => {
       const { data, error } = await supabase
@@ -34,12 +40,13 @@ const CreateTemplate = ({ userId }) => {
         .eq('user_id', userId);
 
       if (error) console.error('Error fetching templates:', error);
-      else setUsedTemplates(data.map(template => template.storyTitle));
+      else setUsedTemplates(data.map(template => template.storyTitle)); // Guarda los títulos de las plantillas ya usadas
     };
 
     fetchUsedTemplates();
   }, [userId]);
 
+  // Función para crear una plantilla nueva
   const handleCreateTemplate = async (e) => {
     e.preventDefault();
 
@@ -58,15 +65,16 @@ const CreateTemplate = ({ userId }) => {
       setMessage(`Error: ${error.message}`);
     } else {
       setMessage('Plantilla creada exitosamente');
-      setStoryTitle('');
-      setDescription('');
-      setMission('');
-      setRole('Humano');
-      setPlanet('Tierra');
-      showTemporaryNotification();
+      setStoryTitle(''); // Limpia el campo de título
+      setDescription(''); // Limpia el campo de descripción
+      setMission(''); // Limpia el campo de misión
+      setRole('Humano'); // Resetea el rol a "Humano"
+      setPlanet('Tierra'); // Resetea el planeta a "Tierra"
+      showTemporaryNotification(); // Muestra la notificación temporal
     }
   };
 
+  // Función para usar una plantilla prediseñada
   const handleUseDefaultTemplate = async (template) => {
     const { error } = await supabase.from('Templates').insert([
       {
@@ -83,16 +91,18 @@ const CreateTemplate = ({ userId }) => {
       setMessage(`Error: ${error.message}`);
     } else {
       setMessage(`La plantilla "${template.title}" fue creada exitosamente`);
-      setUsedTemplates([...usedTemplates, template.title]);
+      setUsedTemplates([...usedTemplates, template.title]); // Agrega la plantilla usada a la lista
       showTemporaryNotification();
     }
   };
 
+  // Función para mostrar una notificación temporal
   const showTemporaryNotification = () => {
     setShowNotification(true);
-    setTimeout(() => setShowNotification(false), 3000); // Se oculta después de 3 segundos
+    setTimeout(() => setShowNotification(false), 3000); // Oculta la notificación después de 3 segundos
   };
 
+  // Renderizado del componente CreateTemplate
   return (
     <div>
       <h2>Nueva Historia</h2>
@@ -115,7 +125,7 @@ const CreateTemplate = ({ userId }) => {
                 <p><strong>Planeta:</strong> {template.planet}</p>
                 <button 
                   onClick={() => handleUseDefaultTemplate(template)} 
-                  disabled={usedTemplates.includes(template.title)}
+                  disabled={usedTemplates.includes(template.title)} // Desactiva si ya fue usada
                 >
                   {usedTemplates.includes(template.title) ? 'Ya usada' : 'Usar esta Plantilla'}
                 </button>

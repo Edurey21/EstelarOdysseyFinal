@@ -1,24 +1,31 @@
+// src/components/CollaborationDetails.js
+
+// Importaciones necesarias para manejar los detalles de la colaboración
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useParams, useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación
 import { supabase } from '../supabaseClient';
-import './CollaborationDetails.css';
+import './CollaborationDetails.css'; // Importa el archivo CSS correspondiente
 
+// Componente CollaborationDetails que muestra los detalles y comentarios de una colaboración
 const CollaborationDetails = ({ userId }) => {
-  const { id } = useParams();
-  const navigate = useNavigate(); // Define navigate
-  const [details, setDetails] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
-  const [message, setMessage] = useState('');
-  const [userColors, setUserColors] = useState({});
-  const [participants, setParticipants] = useState([]);
+  const { id } = useParams(); // Obtiene el id de la colaboración desde la URL
+  const navigate = useNavigate(); // Definición de navigate para manejar la navegación
+  const [details, setDetails] = useState(null); // Estado para almacenar los detalles de la colaboración
+  const [comments, setComments] = useState([]); // Estado para los comentarios
+  const [newComment, setNewComment] = useState(''); // Estado para almacenar el nuevo comentario
+  const [message, setMessage] = useState(''); // Estado para mensajes de error o carga
+  const [userColors, setUserColors] = useState({}); // Estado para almacenar los colores de cada usuario
+  const [participants, setParticipants] = useState([]); // Estado para los participantes de la colaboración
 
+  // Paleta de colores para asignar a los usuarios
   const colorPalette = ['#1b263b', '#283845', '#3a506b', '#5bc0be', '#0b132b', '#6fffe9', '#2c3e50', '#4a69bd'];
 
+  // Función para capitalizar la primera letra de una cadena
   const capitalizeFirstLetter = (string) => {
     return string ? string.charAt(0).toUpperCase() + string.slice(1) : '';
   };
 
+  // Función para obtener los detalles de la colaboración
   const fetchCollaborationDetails = async () => {
     const { data, error } = await supabase
       .from('Collaborations')
@@ -29,15 +36,17 @@ const CollaborationDetails = ({ userId }) => {
     if (error) {
       setMessage(`Error: ${error.message}`);
     } else {
-      setDetails(data);
-      fetchComments(data.template_id);
+      setDetails(data); // Guarda los detalles de la colaboración
+      fetchComments(data.template_id); // Obtiene los comentarios asociados
 
+      // Obtener el creador de la historia y su rol
       const creatorUsername = data?.Templates?.Users?.username ? capitalizeFirstLetter(data.Templates.Users.username) : null;
       const creatorRole = data?.role;
-      fetchParticipants(data.template_id, creatorUsername, creatorRole);
+      fetchParticipants(data.template_id, creatorUsername, creatorRole); // Obtiene los participantes de la colaboración
     }
   };
 
+  // Función para obtener los comentarios asociados a la plantilla
   const fetchComments = async (templateId) => {
     const { data, error } = await supabase
       .from('Comments')
@@ -47,16 +56,18 @@ const CollaborationDetails = ({ userId }) => {
 
     if (!error) {
       const colors = {};
+      // Asigna un color a cada usuario en base a su ID
       data.forEach((comment) => {
         if (!colors[comment.user_id]) {
           colors[comment.user_id] = colorPalette[Object.keys(colors).length % colorPalette.length];
         }
       });
-      setUserColors(colors);
-      setComments(data);
+      setUserColors(colors); // Guarda los colores de los usuarios
+      setComments(data); // Guarda los comentarios
     }
   };
 
+  // Función para obtener los participantes de la colaboración
   const fetchParticipants = async (templateId, creatorUsername, creatorRole) => {
     const { data, error } = await supabase
       .from('Collaborations')
@@ -68,13 +79,15 @@ const CollaborationDetails = ({ userId }) => {
         username: capitalizeFirstLetter(d.Users.username),
         role: d.role,
       }));
+      // Añade el creador de la historia al inicio de la lista de participantes
       if (creatorUsername) {
         allParticipants.unshift({ username: creatorUsername, role: creatorRole });
       }
-      setParticipants(allParticipants);
+      setParticipants(allParticipants); // Guarda la lista de participantes
     }
   };
 
+  // Función para añadir un nuevo comentario
   const handleAddComment = async (e) => {
     e.preventDefault();
 
@@ -82,22 +95,24 @@ const CollaborationDetails = ({ userId }) => {
       {
         template_id: details.template_id,
         user_id: userId,
-        content: newComment,
+        content: newComment, // Añade el nuevo comentario
       },
     ]);
 
     if (error) {
       setMessage(`Error: ${error.message}`);
     } else {
-      setNewComment('');
-      fetchComments(details.template_id);
+      setNewComment(''); // Limpia el campo de texto
+      fetchComments(details.template_id); // Refresca los comentarios
     }
   };
 
+  // useEffect para cargar los detalles de la colaboración cuando cambia el ID
   useEffect(() => {
     fetchCollaborationDetails();
   }, [id]);
 
+  // Renderizado del componente CollaborationDetails
   return (
     <div className="collaboration-container">
       {details ? (
@@ -111,6 +126,7 @@ const CollaborationDetails = ({ userId }) => {
             <p><strong>Historia Creada Por:</strong> {capitalizeFirstLetter(details.Templates.Users.username)}</p>
           </div>
 
+          {/* Sección de participantes */}
           <div className="participants-section">
             <h3>Participantes</h3>
             <ul>
@@ -122,6 +138,7 @@ const CollaborationDetails = ({ userId }) => {
             </ul>
           </div>
 
+          {/* Sección de comentarios */}
           <h3>Comentarios</h3>
           <div className="comments">
             {comments.map((comment) => (
@@ -135,6 +152,7 @@ const CollaborationDetails = ({ userId }) => {
             ))}
           </div>
 
+          {/* Formulario para añadir nuevos comentarios */}
           <form onSubmit={handleAddComment}>
             <textarea
               placeholder="Escribe un comentario..."
@@ -145,7 +163,7 @@ const CollaborationDetails = ({ userId }) => {
             <button type="submit">Enviar</button>
           </form>
 
-          {/* Botón para volver a "Mis historias" */}
+          {/* Botón para volver a la página de historias */}
           <button className="go-back-button" onClick={() => navigate('/dashboard')}>Volver a Mis Historias</button>
 
         </div>

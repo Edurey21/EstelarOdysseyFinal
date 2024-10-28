@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* src/App.css */
 .App {
   text-align: center;
   font-family: 'Orbitron', sans-serif;
@@ -100,4 +100,121 @@
 
 .active-collaborators li p strong {
   color: #00d4ff;
+}
+/* src/App.css */
+
+/* Estilos generales para la aplicación */
+.App {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif; /* Fuente de ciencia ficción */
+  background-color: #0d0d0d; /* Fondo oscuro para el tema espacial */
+  color: #ffffff; /* Color de texto claro */
+}
+
+/* Estilos para la barra de navegación (navbar) */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos a los extremos */
+  align-items: center;
+  padding: 20px; /* Espaciado interno */
+  background-color: #1a1a1a; /* Fondo oscuro para la barra de navegación */
+  box-shadow: 0px 4px 15px rgba(0, 212, 255, 0.3); /* Sombra con un tono de neón */
+}
+
+/* Contenedor para los enlaces de la barra de navegación */
+.nav-links {
+  display: flex; /* Alinea los enlaces en fila */
+  gap: 15px; /* Espacio entre enlaces */
+}
+
+/* Estilos para los enlaces de la barra de navegación */
+.nav-links a {
+  color: #00d4ff; /* Color de texto neón */
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  font-size: 1rem; /* Tamaño de fuente */
+  transition: color 0.3s ease, transform 0.3s ease; /* Transición suave en hover */
+}
+
+/* Efecto hover en los enlaces */
+.nav-links a:hover {
+  color: #00a3cc; /* Cambia el color en hover */
+  transform: scale(1.1); /* Aumenta el tamaño ligeramente en hover */
+}
+
+/* Estilos para el botón de cerrar sesión */
+.logout-button {
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-size: 1rem;
+  color: #00d4ff; /* Color del texto */
+  background-color: transparent; /* Fondo transparente */
+  border: 1px solid #00d4ff; /* Borde neón */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor a pointer */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave en hover */
+}
+
+/* Efecto hover para el botón de cerrar sesión */
+.logout-button:hover {
+  background-color: #00d4ff; /* Cambia el fondo a neón en hover */
+  color: #0d0d0d; /* Cambia el color del texto */
+}
+
+/* Estilos para el logo */
+.logo {
+  width: 80px; /* Ancho del logo */
+  height: auto; /* Mantiene la proporción del logo */
+}
+
+/* Estilos para el componente Active Collaborators */
+.active-collaborators {
+  max-width: 600px; /* Ancho máximo del componente */
+  margin: 20px auto; /* Centra el componente horizontalmente */
+  padding: 20px; /* Espaciado interno */
+  background-color: #1a1a1a; /* Fondo oscuro */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0px 4px 15px rgba(0, 212, 255, 0.2); /* Sombra para destacar el contenedor */
+  color: #ffffff; /* Color de texto claro */
+}
+
+/* Estilos para el título del componente Active Collaborators */
+.active-collaborators h3 {
+  font-size: 1.8rem; /* Tamaño de fuente */
+  text-align: center; /* Alinea el texto en el centro */
+  color: #00d4ff; /* Color neón */
+  margin-bottom: 20px; /* Espacio debajo del título */
+  text-shadow: 0px 0px 6px #00d4ff, 0px 0px 10px #00d4ff; /* Efecto de brillo */
+}
+
+/* Estilos para la lista de colaboradores */
+.active-collaborators ul {
+  list-style: none; /* Elimina los estilos predeterminados de la lista */
+  padding: 0; /* Elimina el padding predeterminado */
+}
+
+/* Estilos para los elementos de la lista */
+.active-collaborators li {
+  background-color: #2a2a2a; /* Fondo oscuro para cada elemento */
+  margin-bottom: 15px; /* Espacio entre los elementos */
+  padding: 15px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid #00d4ff; /* Borde neón */
+  box-shadow: 0px 4px 10px rgba(0, 212, 255, 0.3); /* Sombra para destacar los elementos */
+  transition: background-color 0.3s ease; /* Transición suave en hover */
+}
+
+/* Efecto hover para los elementos de la lista */
+.active-collaborators li:hover {
+  background-color: #333333; /* Cambia el fondo a un gris más claro en hover */
+}
+
+/* Estilos para los párrafos dentro de los elementos de la lista */
+.active-collaborators li p {
+  font-size: 1rem; /* Tamaño de fuente */
+  color: #bfbfbf; /* Color de texto gris */
+  margin: 10px 0; /* Espacio superior e inferior */
+}
+
+/* Estilos para el texto resaltado dentro de los párrafos */
+.active-collaborators li p strong {
+  color: #00d4ff; /* Color neón para resaltar nombres */
 }

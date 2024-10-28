@@ -66,28 +66,32 @@ li {
   box-shadow: 0px 4px 10px rgba(0, 212, 255, 0.3);
 }
 
+/* Hover en los elementos de la lista */
 li:hover {
   background-color: #333333;
 }
 
+/* Estilo para los títulos de cada historia en la lista */
 li h4 {
   margin: 0;
   color: #00d4ff;
   text-shadow: 0px 0px 4px #00d4ff;
 }
 
+/* Estilo para las descripciones de las historias */
 li p {
   margin-top: 10px;
   color: #bfbfbf;
   font-size: 1.1rem; /* Aumenta el tamaño de fuente de la descripción */
 }
 
-/* Enlaces */
+/* Estilos para los enlaces */
 a {
   text-decoration: none;
   color: #00d4ff;
 }
 
+/* Hover en los enlaces */
 a:hover {
   color: #00a3cc;
   text-decoration: underline;

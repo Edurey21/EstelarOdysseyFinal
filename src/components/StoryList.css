@@ -1,5 +1,6 @@
 /* src/components/StoryList.css */
 
+/* Estilos para el contenedor principal de la lista de historias */
 .story-list {
   max-width: 600px;
   margin: 0 auto;
@@ -10,6 +11,7 @@
   color: #ffffff;
 }
 
+/* Estilos para el título de la sección */
 h3 {
   font-size: 1.8rem;
   text-align: center;
@@ -18,11 +20,13 @@ h3 {
   text-shadow: 0px 0px 6px #00d4ff, 0px 0px 10px #00d4ff;
 }
 
+/* Estilos para la lista de historias */
 ul {
-  list-style: none;
+  list-style: none; /* Elimina los bullets de la lista */
   padding: 0;
 }
 
+/* Estilos para cada historia */
 li {
   background-color: #2a2a2a;
   margin-bottom: 15px;
@@ -30,13 +34,15 @@ li {
   border-radius: 5px;
   border: 1px solid #00d4ff;
   box-shadow: 0px 4px 10px rgba(0, 212, 255, 0.3);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* Efecto de transición en el color de fondo */
 }
 
+/* Efecto hover para cada historia */
 li:hover {
   background-color: #333333;
 }
 
+/* Estilos para el título de cada historia */
 li h4 {
   font-size: 1.4rem;
   color: #00d4ff;
@@ -44,12 +50,14 @@ li h4 {
   text-shadow: 0px 0px 4px #00d4ff;
 }
 
+/* Estilos para la descripción de cada historia */
 li p {
   font-size: 1rem;
   color: #bfbfbf;
   margin: 10px 0;
 }
 
+/* Estilos para el texto en negrita */
 li p strong {
   color: #00d4ff;
 }

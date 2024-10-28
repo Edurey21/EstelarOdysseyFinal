@@ -1,3 +1,5 @@
+/* src/components/ImageCarousel.css */
+
 /* Contenedor del carrusel */
 .carousel-slide {
   position: relative;
@@ -8,7 +10,7 @@
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5); /* Sombra */
 }
 
-/* Imágenes del carrusel */
+/* Estilo para las imágenes dentro del carrusel */
 .carousel-image {
   width: 100%;
   height: 500px;
@@ -18,12 +20,13 @@
   filter: brightness(0.8);
 }
 
+/* Efecto al hacer hover en las imágenes */
 .carousel-image:hover {
   transform: scale(1.05);
   filter: brightness(1);
 }
 
-/* Contenedor del texto */
+/* Contenedor del texto sobre las imágenes */
 .carousel-caption-container {
   position: absolute;
   bottom: 50px;
@@ -35,7 +38,7 @@
   animation: slideIn 1.5s ease-out;
 }
 
-/* Animación de deslizamiento */
+/* Animación de deslizamiento del texto */
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -47,7 +50,7 @@
   }
 }
 
-/* Título animado */
+/* Título del carrusel con animación */
 .carousel-title {
   font-size: 2rem;
   margin: 0;
@@ -57,14 +60,14 @@
   font-family: 'Orbitron', sans-serif;
 }
 
-/* Animación de desvanecimiento para el título */
+/* Animación de desvanecimiento del título */
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
 
-/* Animación de construcción letra por letra */
+/* Animación de escritura letra por letra */
 @keyframes typing {
   from {
     width: 0;
@@ -74,7 +77,7 @@
   }
 }
 
-/* Descripción animada */
+/* Descripción del carrusel con animación */
 .carousel-description {
   font-size: 1.2rem;
   margin-top: 10px;
@@ -95,7 +98,7 @@
   }
 }
 
-/* Indicadores personalizados */
+/* Indicadores personalizados del carrusel */
 .carousel .control-dots {
   position: absolute;
   bottom: 10px;
@@ -103,6 +106,7 @@
   text-align: center;
 }
 
+/* Estilo de los puntos indicadores del carrusel */
 .carousel .control-dots .dot {
   background: #ffffff;
   width: 10px; /* Ajusta el tamaño del círculo */
@@ -113,8 +117,8 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
+/* Efecto al seleccionar un punto */
 .carousel .control-dots .dot.selected {
   background: #00d4ff;
-  transform: scale(1.2); /* Efecto al seleccionar */
+  transform: scale(1.2); /* Efecto de escala al seleccionar */
 }
-

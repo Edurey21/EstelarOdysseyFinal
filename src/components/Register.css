@@ -1,3 +1,6 @@
+/* src/components/Register.css */
+
+/* Estilo principal para el contenedor del registro */
 .register-container {
   font-family: 'Orbitron', sans-serif;
   max-width: 400px;
@@ -11,6 +14,7 @@
   margin: 50px auto;
 }
 
+/* Estilo para el título de registro */
 h2 {
   font-size: 2.2rem;
   color: #00d4ff;
@@ -18,12 +22,14 @@ h2 {
   text-shadow: 0px 0px 6px #00d4ff, 0px 0px 10px #00d4ff, 0px 0px 20px #00d4ff;
 }
 
+/* Estilo para el formulario */
 form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+/* Estilo para los campos de texto */
 form input[type="email"],
 form input[type="text"],
 form input[type="password"] {
@@ -37,11 +43,13 @@ form input[type="password"] {
   box-sizing: border-box;
 }
 
+/* Efecto al enfocar los campos de texto */
 input:focus {
   outline: none;
   box-shadow: 0px 0px 10px #00d4ff;
 }
 
+/* Estilos para los botones */
 button[type="submit"],
 button[type="button"] {
   padding: 10px 20px;
@@ -54,18 +62,21 @@ button[type="button"] {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Efecto hover para los botones */
 button[type="submit"]:hover,
 button[type="button"]:hover {
   background-color: #00d4ff;
   color: #0d0d0d;
 }
 
+/* Estilo para el párrafo de mensajes */
 p {
   color: #bfbfbf;
   margin-top: 15px;
   font-size: 1rem;
 }
 
+/* Estilo para el botón de login */
 button[type="button"] {
   background: none;
   border: none;
@@ -75,6 +86,7 @@ button[type="button"] {
   transition: color 0.3s ease;
 }
 
+/* Efecto hover para el botón de login */
 button[type="button"]:hover {
   color: #ffffff; /* Cambia el color del texto en hover */
 }

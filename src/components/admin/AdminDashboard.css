@@ -1,61 +1,71 @@
-/* src/admin/AdminDashboard.css */
+/* src/components/admin/AdminDashboard.css */
+
+/* Estilos para el fondo y la fuente de la página */
 body {
-    background-color: #0f0f0f;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  h2 {
-    color: #fff;
-    text-align: center;
-    text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
-    margin: 20px 0;
-  }
-  
-  .dashboard-container {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-  }
-  
-  .stat-card {
-    background: linear-gradient(145deg, #3a3a3a, #1a1a1a);
-    border-radius: 15px;
-    box-shadow: 6px 6px 12px #111, -6px -6px 12px #292929;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.2s;
-  }
-  
-  .stat-card:hover {
-    transform: scale(1.05);
-    box-shadow: 10px 10px 20px #111, -10px -10px 20px #292929;
-  }
-  
-  .stat-card h3 {
-    color: #ff007f;
-    margin: 10px 0;
-    font-size: 1.5rem;
-  }
-  
-  .stat-card p {
-    color: #fff;
-    font-size: 2rem;
-    margin: 5px 0;
-  }
-  
-  .stat-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .stat-card ul li {
-    color: #fff;
-    margin: 5px 0;
-  }
-  
-  .stat-card ul li:hover {
-    color: #ff007f;
-    text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
-  }
-  
+  background-color: #0f0f0f;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para los encabezados */
+h2 {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
+  margin: 20px 0;
+}
+
+/* Contenedor principal del dashboard */
+.dashboard-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+/* Tarjetas que muestran las estadísticas */
+.stat-card {
+  background: linear-gradient(145deg, #3a3a3a, #1a1a1a);
+  border-radius: 15px;
+  box-shadow: 6px 6px 12px #111, -6px -6px 12px #292929;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+/* Efecto de hover en las tarjetas */
+.stat-card:hover {
+  transform: scale(1.05);
+  box-shadow: 10px 10px 20px #111, -10px -10px 20px #292929;
+}
+
+/* Estilos para los encabezados dentro de las tarjetas */
+.stat-card h3 {
+  color: #ff007f;
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+/* Estilos para los párrafos dentro de las tarjetas */
+.stat-card p {
+  color: #fff;
+  font-size: 2rem;
+  margin: 5px 0;
+}
+
+/* Estilos para las listas dentro de las tarjetas */
+.stat-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilos para los ítems de la lista */
+.stat-card ul li {
+  color: #fff;
+  margin: 5px 0;
+}
+
+/* Efecto hover en los ítems de la lista */
+.stat-card ul li:hover {
+  color: #ff007f;
+  text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
+}
