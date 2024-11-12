@@ -1,5 +1,3 @@
-/* src/components/CreateTemplate.css */
-
 /* Estilos principales */
 body {
   font-family: 'Orbitron', sans-serif;
@@ -91,11 +89,14 @@ form select {
   border-radius: 5px;
   font-family: 'Orbitron', sans-serif;
   font-size: 0.9rem;
+  box-sizing: border-box; /* Asegura que el padding no afecta el ancho */
+  height: 40px; /* Asegura que todos los campos tengan la misma altura */
 }
 
 /* Deshabilita el redimensionamiento en el textarea */
 form textarea {
   resize: none;
+  height: auto; /* Permite que textarea se ajuste al contenido */
 }
 
 /* Estilos para cuando el campo está enfocado */
@@ -107,12 +108,11 @@ form select:focus {
   box-shadow: 0 0 6px #00d4ff;
 }
 
-/* Estilo adicional para asegurar que el <select> tenga el mismo tamaño que los campos de texto */
+/* Estilo adicional para el select */
 form select {
-  height: 40px;
-  -webkit-appearance: none; /* Elimina el estilo por defecto en navegadores Webkit */
-  -moz-appearance: none; /* Elimina el estilo por defecto en navegadores Firefox */
-  appearance: none; /* Elimina el estilo por defecto en navegadores modernos */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* Estilos para los elementos de la lista de plantillas prediseñadas */
@@ -156,7 +156,7 @@ h3 {
 /* Estilos para el botón de "Volver" */
 .return-button {
   display: block;
-  margin-top: 30px; /* Ajuste para separar el botón "Volver" del formulario */
+  margin-top: 30px;
   text-align: center;
 }
 

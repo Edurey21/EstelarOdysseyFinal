@@ -1,5 +1,3 @@
-// src/components/Register.js
-
 // Importaciones necesarias para el componente de registro
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
@@ -50,7 +48,12 @@ const Register = () => {
     // Inserta el nuevo usuario en la base de datos si todo es correcto
     const { error } = await supabase.from('Users').insert([{ email, username, password }]); // Crea el usuario en la tabla Users
     if (error) {
-      setMessage(`Error: ${error.message}`); // Muestra un mensaje de error si ocurre un problema al insertar el usuario
+      // Verificar si el error es por nombre de usuario duplicado
+      if (error.message.includes('duplicate key value violates unique constraint "Users_username_key"')) {
+        setMessage('Este usuario ya está registrado'); // Mensaje personalizado
+      } else {
+        setMessage(`Error: ${error.message}`); // Otro tipo de error
+      }
     } else {
       setMessage('Usuario registrado exitosamente'); // Muestra un mensaje de éxito si el registro fue correcto
       setTimeout(() => {
