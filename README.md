@@ -38,5 +38,57 @@ Antes de comenzar, asegúrate de tener las siguientes herramientas instaladas en
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/estelar-odyssey.git
+git clone https://github.com/Edurey21/EstelarOdysseyFinal.git
 cd estelar-odyssey
+```
+
+## Instalación de dependencias
+
+Asegúrate de estar en el directorio del proyecto, luego instala las dependencias necesarias ejecutando:
+
+```bash
+npm install
+```
+
+## Configuración de Supabase
+1. Crea un proyecto en Supabase. 
+2. Configura las variables de entorno necesarias para conectar con Supabase.
+3. En el archivo supabaseClient.js, asegúrate de ingresar las credenciales correctas de Supabase:
+
+```bash
+const supabaseUrl = 'https://your-supabase-url';
+const supabaseAnonKey = 'your-anon-key';
+```
+
+## Iniciar la aplicación
+Una vez instaladas las dependencias y configurado Supabase, puedes iniciar la aplicación localmente con:
+
+```bash
+npm start
+```
+
+La aplicación estará disponible en http://localhost:3000.
+
+## Uso
+### Roles de usuario
+- **Usuarios normales**:
+  - Crear y explorar historias.
+  - Colaborar con otros usuarios en misiones.
+  - Comentar y participar en chats dentro de cada historia.
+- **Administrador**:
+  - Acceso exclusivo al panel de administración para gestionar las estadísticas de la plataforma.
+
+## Funcionalidades clave
+- **Crear Historia**: En el menú de navegación, selecciona "Nueva Historia" para crear una plantilla con un rol, misión y planeta de tu elección.
+- **Explorar Plantillas**: En "Explorar Plantillas" puedes ver historias creadas por otros usuarios y unirte a ellas.
+- **Participar en Colaboraciones**: Después de unirte a una historia, puedes participar comentando o interactuando con otros usuarios.
+
+## Panel de administración
+El administrador tiene acceso a un panel que permite ver estadísticas de la plataforma, como el número de usuarios registrados, historias creadas y colaboraciones realizadas.
+
+
+## Contacto
+Si tienes alguna duda o comentario, no dudes en contactarme a través de:
+
+- Correo: avila.milanes.eduardo@gmail.com
+- GitHub: Edurey21

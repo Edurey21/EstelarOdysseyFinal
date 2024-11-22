@@ -19,7 +19,8 @@ const TemplateDetails = ({ userId }) => {
   const [currentUsername, setCurrentUsername] = useState(''); // Estado para el nombre de usuario actual
 
   // Paleta de colores para asignar a los usuarios en los comentarios
-  const colorPalette = ['#1b263b', '#283845', '#3a506b', '#5bc0be', '#0b132b', '#6fffe9', '#2c3e50', '#4a69bd'];
+  const colorPalette = ['#1b263b', '#283845', '#3a506b', '#0b132b', '#2c3e50', '#4a69bd', '#093333', '#1c3d2d', '#1d044a', '#1f2026', '#0b123d', '#1c424f', '#05361e', '#263606', '#36042b', '#360410', '#422036', '#2f3a4a'];
+
 
   // Función para capitalizar la primera letra de un string
   const capitalizeFirstLetter = (string) => {
