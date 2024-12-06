@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { supabase } from './supabaseClient'; // Importa el cliente de Supabase
 import AdminDashboard from './components/admin/AdminDashboard';
+import AdminGraphStats from './components/admin/AdminGraphStats'; // Importa el componente para las gráficas
 import Dashboard from './components/Dashboard';
 import ExploreTemplates from './components/ExploreTemplates';
 import CollaborationDetails from './components/CollaborationDetails';
@@ -86,6 +87,7 @@ function App() {
           <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} setUserId={setUserId} setUsername={setUsername} />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUserId={setUserId} setUsername={setUsername} />} />
           <Route path="/admin" element={userId === adminUserId ? <AdminDashboard /> : <Navigate to="/" />} /> {/* Protege el acceso del admin */}
+          <Route path="/admin/AdminGraphStats" element={userId === adminUserId ? <AdminGraphStats /> : <Navigate to="/" />} /> {/* Nueva ruta para gráficas */}
           {isLoggedIn && userId !== adminUserId && (
             <>
               {/* Rutas para usuarios no administradores */}
